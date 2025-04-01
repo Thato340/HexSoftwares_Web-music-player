@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.music-player {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #333;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #764ba2;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.header p {
+    color: #666;
+    font-size: 14px;
+}
+
+.album-art {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.album-art img {
+    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vinyl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/vinyl.png') center/cover no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.5s;
+    z-index: 2;
+}
+
+.playing .vinyl {
+    opacity: 0.8;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.song-info {
+    margin-bottom: 20px;
+}
+
+.song-info h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.song-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+.progress-container {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 6px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    border-radius: 10px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.time-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    background-color: #764ba2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls button:hover {
+    background-color: #667eea;
+    transform: scale(1.1);
+}
+
+#play-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.volume-control i {
+    margin-right: 10px;
+    color: #764ba2;
+}
+
+#volume-slider {
+    width: 70%;
+    cursor: pointer;
+}
+
+.playlist {
+    text-align: left;
+}
+
+.playlist h3 {
+    margin-bottom: 10px;
+    color: #764ba2;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+#song-list {
+    list-style: none;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#song-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#song-list li:hover {
+    background-color: #f0e6ff;
+}
+
+#song-list li.playing {
+    background-color: #e0d0ff;
+    color: #764ba2;
+    font-weight: bold;
+}
+
+
+#song-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+#song-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#song-list::-webkit-scrollbar-thumb {
+    background: #764ba2;
+    border-radius: 10px;
+}
+
+
+@media (max-width: 480px) {
+    .music-player {
+        padding: 15px;
+    }
+    
+    .album-art {
+        width: 150px;
+        height: 150px;
+    }
+}
